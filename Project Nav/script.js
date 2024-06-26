@@ -1,11 +1,8 @@
-const navbar = document.querySelector(".navbar");
+document.addEventListener("DOMContentLoaded", function () {
+  var toggler = document.querySelector(".navbar-toggler");
+  var navbarCollapse = document.querySelector("#navbarNav");
 
-function toggleNavbarSmaller() {
-  if (window.scrollY > 0) {
-    navbar.classList.add("navbar-smaller");
-  } else {
-    navbar.classList.remove("navbar-smaller");
-  }
-}
-
-window.addEventListener("scroll", toggleNavbarSmaller);
+  toggler.addEventListener("click", function () {
+    navbarCollapse.classList.toggle("show");
+  });
+});
