@@ -1,6 +1,5 @@
-# sp2024-cp01-csi-2
+Statistics page
 
-Design: cryptospaniards.com;
-Theme: white;
-Styling: Bootstrap;
-Fonts: Roboto.
+to do:
+- dark mode button
+- responsive mode
