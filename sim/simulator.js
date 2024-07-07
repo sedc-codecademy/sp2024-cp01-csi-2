@@ -225,14 +225,17 @@ function CalculateCryptoValue(balance, prices) {
 
 FetchCryptoData();
 
+
+
 let refreshIntervalId;
 function startRefreshInterval() {
     refreshIntervalId = setInterval(() => {
         FetchCryptoData();
     }, 30000);
 }
-startRefreshInterval();
-
 function stopRefreshInterval() {
     clearInterval(refreshIntervalId);
 }
+startRefreshInterval();
+
+
