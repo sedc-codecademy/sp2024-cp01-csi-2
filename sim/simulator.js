@@ -187,8 +187,10 @@ class CryptoWallet {
 function UpdateUIForLoggedInUser() {
     const activeAccount = JSON.parse(localStorage.getItem('activeAccount'));
     const loginElement = document.getElementById('login');
+    const registerElement = document.getElementById("register")
     if (activeAccount) {
-        loginElement.innerHTML = `<span>Welcome, ${activeAccount.email}</span>`;
+        registerElement.innerHTML = `<span>Welcome, ${activeAccount.email}</span>`;
+        loginElement.innerHTML = "";
     }
 }
 
