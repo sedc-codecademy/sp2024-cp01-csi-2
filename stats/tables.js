@@ -67,7 +67,7 @@ function populateTable(array, tableId, page = 1) {
   table.innerHTML = "";
 
   // Create table headers
-  const headers = ["Name", "Price In USD $", "Percent Change Last 7 Days %"];
+  const headers = ["Name", "Price In USD $", "Last 7 Days"];
   const trHeader = document.createElement("tr");
 
   headers.forEach((headerText, index) => {
