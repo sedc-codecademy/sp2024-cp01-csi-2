@@ -167,17 +167,17 @@ const sortDirection = {};
 function sortTable(tableId, columnIndex) {
   const table = document.getElementById(tableId);
 
-  // Get all rows except the header row
+  //>>>>>  Get all rows except the header row
   const rows = Array.from(table.rows).slice(1);
 
-  // Toggle sort direction
+  //>>>>>  Toggle sort direction
   if (sortDirection[columnIndex] === 'asc') {
     sortDirection[columnIndex] = 'desc';
   } else {
     sortDirection[columnIndex] = 'asc';
   }
 
-  // Sort rows based on column values
+  //>>>>>   Sort rows based on column values
   rows.sort((rowA, rowB) => {
     const cellA = rowA.cells[columnIndex].textContent.trim();
     const cellB = rowB.cells[columnIndex].textContent.trim();
@@ -200,11 +200,11 @@ function sortTable(tableId, columnIndex) {
   tbody.innerHTML = "";
   rows.forEach(row => tbody.appendChild(row));
 
-  // Clear existing indicators
+  //>>>>>>  Clear existing indicators
   const headers = table.querySelectorAll('th');
   headers.forEach(th => th.classList.remove('asc', 'desc'));
 
-  // Add indicator to sorted column header
+  //>>>>>>   Add indicator to sorted column header
   const currentHeader = headers[columnIndex];
   currentHeader.classList.add(sortDirection[columnIndex]);
 
