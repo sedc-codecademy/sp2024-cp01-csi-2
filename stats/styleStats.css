@@ -74,3 +74,11 @@ th.asc::after {
 th.desc::after {
        content: ' ▼';
 }
+
+th:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+
+  

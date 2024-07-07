@@ -1,4 +1,4 @@
-console.log("haii");
+
 const cryptoApi = "https://api.coinlore.net/api/tickers/";
 
 
@@ -13,7 +13,7 @@ let currentPage = {
 };
 const itemsPerPage = 10;
 
-function fetchCryptoData() {
+function FetchCryptoData() {
   fetch(cryptoApi)
     .then(response => {
       if (!response.ok) {
@@ -33,27 +33,29 @@ function fetchCryptoData() {
       const growthFutureElement = document.getElementById(growthFutureTable);
       growthFutureElement.setAttribute("data-total-items", sortedGrowthFutureData.length);
       growthFutureElement.setAttribute("data-array", JSON.stringify(sortedGrowthFutureData));
-      populateTable(sortedGrowthFutureData, growthFutureTable, currentPage[growthFutureTable]);
+      PopulateTable(sortedGrowthFutureData, growthFutureTable, currentPage[growthFutureTable]);
 
       // Sort by percent_change_7d descending for bestGrowingTable
       const sortedBestGrowingData = data.data.slice().sort((a, b) => b.percent_change_7d - a.percent_change_7d);
       const bestGrowingElement = document.getElementById(bestGrowingTable);
       bestGrowingElement.setAttribute("data-total-items", sortedBestGrowingData.length);
       bestGrowingElement.setAttribute("data-array", JSON.stringify(sortedBestGrowingData));
-      populateTable(sortedBestGrowingData, bestGrowingTable, currentPage[bestGrowingTable]);
+      PopulateTable(sortedBestGrowingData, bestGrowingTable, currentPage[bestGrowingTable]);
 
       // Sort by percent_change_7d ascending for bestFallingTable
       const sortedBestFallingData = data.data.slice().sort((a, b) => a.percent_change_7d - b.percent_change_7d);
       const bestFallingElement = document.getElementById(bestFallingTable);
       bestFallingElement.setAttribute("data-total-items", sortedBestFallingData.length);
       bestFallingElement.setAttribute("data-array", JSON.stringify(sortedBestFallingData));
-      populateTable(sortedBestFallingData, bestFallingTable, currentPage[bestFallingTable]);
+      PopulateTable(sortedBestFallingData, bestFallingTable, currentPage[bestFallingTable]);
 
-      originalData = data.data; 
-      //>>>>>>>>>>>>>>>>>>>>>>>>> Initialize filtered data with original
-      filteredData = [...originalData]; 
-      //>>>>>>>>>>>>>>>>>>>>>>>>>>> Initial population of tables with original data
-      populateTables(filteredData); 
+      originalData = data.data;
+
+      // Initialize filtered data with original
+      filteredData = [...originalData];
+
+      // Initial population of tables with original data
+      PopulateTables(filteredData); 
     })
     .catch(error => {
       console.error('Error fetching crypto data:', error);
@@ -62,7 +64,7 @@ function fetchCryptoData() {
 
 // >>>>>>>>>> PopulateTable Main Function
 
-function populateTable(array, tableId, page = 1) {
+function PopulateTable(array, tableId, page = 1) {
   const table = document.getElementById(tableId);
   table.innerHTML = "";
 
@@ -77,7 +79,7 @@ function populateTable(array, tableId, page = 1) {
 
     // Add event listeners to headers for sorting
     th.addEventListener("click", () => {
-      sortTable(tableId, index);
+      SortTable(tableId, index);
     });
 
     trHeader.appendChild(th);
@@ -119,10 +121,10 @@ function populateTable(array, tableId, page = 1) {
   table.appendChild(tbody);
 
   
-  updateNavigationButtons(tableId, array.length);
+  UpdateNavigationButtons(tableId, array.length);
 }
 
-function updateNavigationButtons(tableId, totalItems) {
+function UpdateNavigationButtons(tableId, totalItems) {
   const prevButton = document.getElementById(`${tableId}-prev`);
   const nextButton = document.getElementById(`${tableId}-next`);
   const firstPageButton = document.getElementById(`${tableId}-first`);
@@ -132,7 +134,7 @@ function updateNavigationButtons(tableId, totalItems) {
   firstPageButton.disabled = currentPage[tableId] === 1;
 }
 
-function goToPage(tableId, direction) {
+function GoToPage(tableId, direction) {
   const table = document.getElementById(tableId);
   const totalItems = table.getAttribute("data-total-items");
   const array = JSON.parse(table.getAttribute("data-array"));
@@ -144,17 +146,17 @@ function goToPage(tableId, direction) {
     currentPage[tableId] = Math.ceil(totalItems / itemsPerPage);
   }
 
-  populateTable(array, tableId, currentPage[tableId]);
+  PopulateTable(array, tableId, currentPage[tableId]);
 }
 
-function goToFirstPage(tableId) {
+function GoToFirstPage(tableId) {
   currentPage[tableId] = 1;
   const table = document.getElementById(tableId);
   const array = JSON.parse(table.getAttribute("data-array"));
-  populateTable(array, tableId, currentPage[tableId]);
+  PopulateTable(array, tableId, currentPage[tableId]);
 }
 
-fetchCryptoData();
+FetchCryptoData();
 
 
 
@@ -164,7 +166,7 @@ fetchCryptoData();
 
 const sortDirection = {};
 
-function sortTable(tableId, columnIndex) {
+function SortTable(tableId, columnIndex) {
   const table = document.getElementById(tableId);
 
   //>>>>>  Get all rows except the header row
@@ -219,14 +221,14 @@ function sortTable(tableId, columnIndex) {
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Function to populate tables with filtered data
 
-function populateTables(data) {
-  populateTable(sortAndLimit(data, 'price_usd', 'desc'), "growthFutureTable");
-  populateTable(sortAndLimit(data, 'percent_change_7d', 'desc'), "bestGrowingTable");
-  populateTable(sortAndLimit(data, 'percent_change_7d', 'asc'), "bestFallingTable");
+function PopulateTables(data) {
+  PopulateTable(SortAndLimit(data, 'price_usd', 'desc'), "growthFutureTable");
+  PopulateTable(SortAndLimit(data, 'percent_change_7d', 'desc'), "bestGrowingTable");
+  PopulateTable(SortAndLimit(data, 'percent_change_7d', 'asc'), "bestFallingTable");
 }
 
 // //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Function to sort data and limit results
-function sortAndLimit(data, sortBy, sortOrder) {
+function SortAndLimit(data, sortBy, sortOrder) {
   const sortedData = data.slice().sort((a, b) => {
     if (sortBy === 'price_usd') {
       return sortOrder === 'asc' ? a[sortBy] - b[sortBy] : b[sortBy] - a[sortBy];
@@ -251,34 +253,33 @@ const searchText = this.value.trim().toLowerCase();
   });
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Repopulate tables with filtered data
-  populateTables(filteredData);
+  PopulateTables(filteredData);
 
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Stop refreshing when user searches 
-  stopRefreshInterval();
-  startRefreshInterval();
+  StopRefreshInterval();
+  StartRefreshInterval();
 });
 
 // >>>>>>>>>>>>>> Refresh data every 30 seconds
-// setInterval(fetchCryptoData, 3000);
 
 let refreshIntervalId;
-function startRefreshInterval() {
+function StartRefreshInterval() {
   refreshIntervalId = setInterval(() => {
 
     //>>>>>>>>>> Only fetch data if filteredData is empty (No active search)
     if (filteredData.length === 0) {
-      fetchCryptoData();
+      FetchCryptoData();
     } 
     else {
       //>>>>>>>>>>>> Populate tables with filtered data
-      populateTables(filteredData); 
+      PopulateTables(filteredData); 
     }
   }, 30000);
 }
-startRefreshInterval()
+StartRefreshInterval()
 
 //>>>>>>>>>>>>>>>>>>>>> Function to stop the refresh interval
-function stopRefreshInterval() {
+function StopRefreshInterval() {
   clearInterval(refreshIntervalId);
 }
