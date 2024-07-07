@@ -66,3 +66,11 @@
     }
 }
 
+
+/* Sort Indicator */
+th.asc::after {
+       content: ' ▲';
+}
+th.desc::after {
+       content: ' ▼';
+}
