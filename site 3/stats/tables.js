@@ -116,6 +116,10 @@ function populateTable(array, tableId, page = 1) {
 
   table.appendChild(tbody);
 
+  // >>>>>>   Display Red - Green
+
+
+
   
   updateNavigationButtons(tableId, array.length);
 }

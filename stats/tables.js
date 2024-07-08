@@ -71,11 +71,11 @@ function PopulateTable(array, tableId, page = 1) {
   // Create table headers
   const headers = ["Name", "Price In USD $", "Last 7 Days"];
   const trHeader = document.createElement("tr");
-
   headers.forEach((headerText, index) => {
     const th = document.createElement("th");
     th.textContent = headerText;
     th.setAttribute("scope", "col");
+    th.classList.add('table-headings');
 
     // Add event listeners to headers for sorting
     th.addEventListener("click", () => {
@@ -109,13 +109,26 @@ function PopulateTable(array, tableId, page = 1) {
         th.setAttribute("scope", "row");
         th.textContent = cellData;
         tr.appendChild(th);
-      } else {
+        th.classList.add('tHeaderCrypto');
+      } 
+      else {
         td.textContent = cellData;
         tr.appendChild(td);
       }
+      //>>>> Apply css Negative --- Positive
+      if (parseFloat(element.percent_change_7d) < 0) {
+        td.classList.add("negative");
+        td.textContent += ' ▼';
+      } else {
+        td.classList.add("positive");
+        td.textContent += ' ▲';
+      }
+      
+      
     });
 
     tbody.appendChild(tr);
+
   });
 
   table.appendChild(tbody);
