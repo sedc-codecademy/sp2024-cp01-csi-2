@@ -66,3 +66,217 @@
     }
 }
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>> HEADINGS */
+
+.page-header{
+    background-color:#007bff;
+    color: whitesmoke;
+    font-size: x-large;
+ }
+
+ .table-heading{
+    background-color:rgba(38, 146, 255, 0.8);
+    color: whitesmoke;
+    font-size: large;
+
+ }
+
+ .table-headings{
+    padding: 1%;
+    background-color:rgba(38, 146, 255, 0.8);
+    color: whitesmoke;
+
+ }
+ 
+
+/* Header Indicator */
+
+
+
+th.asc::after {
+       content: ' ▲';
+}
+th.desc::after {
+       content: ' ▼';
+}
+
+/* >>>>>    th and hover */
+
+th{
+    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    color: #333; 
+    background-color: #fff;
+}
+
+th:hover {
+    background-color: #007bff;
+    cursor: pointer;
+    color: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+.positive {
+    color: rgb(107, 201, 107);
+    text-shadow: black;
+    font-weight: bold;
+    content: ' ▲';
+}
+
+.negative {
+    color: rgb(252, 106, 106);
+    text-shadow: black;
+    font-weight: bold;
+    content: ' ▼';
+}
+
+/*  >>>>>   TD */
+
+.tHeaderCrypto {
+
+    background-color:rgba(205, 224, 243, 0.8);
+}
+
+.search {
+    background-color:rgba(205, 224, 243, 0.8);
+}
+
+
+.table-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.table-nav button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table-nav button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .table-nav {
+        flex-direction: column;
+    }
+
+    .table-nav button {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ranking-card {
+        padding: 10px;
+    }
+
+    .table-headings {
+        font-size: medium;
+    }
+
+    .table-subheading {
+        font-size: small;
+    }
+
+    .table-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-nav button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>> HEADINGS */
+
+.page-header{
+    background-color:#007bff;
+    color: whitesmoke;
+    font-size: x-large;
+ }
+
+ .table-heading{
+    background-color:rgba(38, 146, 255, 0.8);
+    color: whitesmoke;
+    font-size: large;
+
+ }
+
+ .table-headings{
+    padding: 1%;
+    background-color:rgba(38, 146, 255, 0.8);
+    color: whitesmoke;
+
+ }
+ 
+
+/* Header Indicator */
+
+
+
+th.asc::after {
+       content: ' ▲';
+}
+th.desc::after {
+       content: ' ▼';
+}
+
+/* >>>>>    th and hover */
+
+th{
+    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    color: #333; 
+    background-color: #fff;
+}
+
+th:hover {
+    background-color: #007bff;
+    cursor: pointer;
+    color: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+.positive {
+    color: rgb(107, 201, 107);
+    text-shadow: black;
+    font-weight: bold;
+    content: ' ▲';
+}
+
+.negative {
+    color: rgb(252, 106, 106);
+    text-shadow: black;
+    font-weight: bold;
+    content: ' ▼';
+}
+
+/*  >>>>>   TD */
+
+.tHeaderCrypto {
+
+    background-color:rgba(205, 224, 243, 0.8);
+}
+
+.search {
+    background-color:rgba(205, 224, 243, 0.8);
+}
