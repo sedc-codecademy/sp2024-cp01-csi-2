@@ -18,6 +18,20 @@ Responsive mode, not logged in:
 
 
 
+______________
+
+STATS
+______________
+Header
+
+-+ red green
+
+Descriptions 
+
+Symbols
+
+
+
 
 
 
